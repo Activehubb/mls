@@ -13,7 +13,6 @@ const client = new MongoClient(MONGO_URL);
 const url = process.env.url;
 let currentUri = url;
 
-const app = express();
 
 async function uploadMedia(url, key) {
   console.log('Download and uploading image from == ', url);
@@ -54,7 +53,6 @@ async function getApiData() {
 
       }
       // get the next uri
-      console.error(`DONE === ${currentUri}`)
       currentUri = response["@odata.nextLink"]
     } while (currentUri && currentUri != null)
   } catch (error) {
